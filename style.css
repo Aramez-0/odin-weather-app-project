@@ -1,0 +1,29 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#data-container {
+    margin: 5px;
+}
+
+#data-container div {
+    margin: 2px;
+}
+
+#select-unit {
+    margin: 5px;
+}
