@@ -8,21 +8,36 @@
     <title>Weather App</title>
 </head>
 <body>
-    <select name="" id="select-unit">
-        <option value="F">Fahrenheit</option>
-        <option value="C">Celsius</option>
-        <option value="K">Kelvin</option>
-    </select>
     <div id="container">
+        <select name="" id="select-unit">
+            <option value="F">Fahrenheit</option>
+            <option value="C">Celsius</option>
+            <option value="K">Kelvin</option>
+        </select>
         <label for="location">Search Location</label>
-        <input type="text" id="location">
+        <div id="search-container">
+            <input type="text" id="location">
+            <button type="button" id="search-location"></button>
+        </div>
         <div id="data-container">
-            <div id="address">Address: </div>
-            <div id="condition">Condition: </div>
-            <div id="description">Description: </div>
-            <div id="temp">Temperature: </div>
-            <div id="feels-like">Feels Like: </div>
-            <div id="humidity">Humidity: </div>
+            <div class="data-pretty">
+                <div id="address">Address: </div>
+            </div>
+            <div class="data-pretty">
+                <div id="condition">Condition: </div>
+            </div>
+            <div class="data-pretty">
+                <div id="description">Description: </div>
+            </div>
+            <div class="data-pretty">
+                <div id="temp">Temperature: </div>
+            </div>
+            <div class="data-pretty">
+                <div id="feels-like">Feels Like: </div>
+            </div>
+            <div class="data-pretty">
+                <div id="humidity">Humidity: </div>
+            </div>
         </div>
     </div>
 </body>

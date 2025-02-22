@@ -12,13 +12,11 @@ async function fetchWeatherData(location) {
     return {alerts, condition, description, temp, feelsLike, humidity, address, icon};
 };
 
-function inputUserLocation() {
-    return location.value
-}
-
-async function displayData(unit) {
+async function displayData() {
     let location = document.querySelector('#location')
     let value = location.value
+    let select = document.querySelector('#select-unit')
+    
     if (!value) {
         value = 'us'
     }
@@ -32,11 +30,21 @@ async function displayData(unit) {
     let feelsLike = document.querySelector('#feels-like')
     let humidity = document.querySelector('#humidity')
 
+    // the api unit selection hates me so i'm doing it manually
+    if (select.value === 'C') {
+        temp.textContent = `Temperature: ${Math.round(((weather.temp - 32) * 5/9))}°C`;
+        feelsLike.textContent = `Feels Like: ${Math.round(((weather.feelsLike - 32) * 5/9))}°C`;
+    } else if (select.value === 'K') {
+        temp.textContent = `Temperature: ${Math.round(((weather.temp - 32) * 5/9 + 273.15))}°K`;
+        feelsLike.textContent = `Feels Like: ${Math.round(((weather.feelsLike - 32) * 5/9 + 273.15))}°K`;
+    } else {
+        temp.textContent = `Temperature: ${weather.temp}°F`;
+        feelsLike.textContent = `Feels Like: ${weather.feelsLike}°F`;
+    };
+
     address.textContent = `Address: ${weather.address}`
     condition.textContent = `Condition: ${weather.condition}`
     description.textContent = `Description: ${weather.description}`
-    temp.textContent = `Temperature: ${weather.temp}`
-    feelsLike.textContent = `Feels Like: ${weather.feelsLike}`
     humidity.textContent = `Humidity: ${weather.humidity}%`
 }
 displayData()
@@ -48,28 +56,10 @@ input.addEventListener('keydown', (event) => {
     }
 })
 
+let search = document.querySelector('#search-location')
+search.addEventListener('click', () => {displayData()})
 
-
-// locations and units do not work sometimes. that is annoying
-
-
-// F - C (x − 32) * 5/9
-// F - K (x − 32) * 5/9 + 273.15
-
-// let select = document.querySelector('#select-unit')
-// select.addEventListener('change', () => {
-//     if (select.value === 'C') {
-//         displayData('C')
-//     } else if (select.value === 'K') {
-//         displayData('K')
-//     }
-// })
-
-// if (unit === 'C') {
-//     (weather.temp - 32) * 5/9;
-//     (weather.feelsLike - 32) * 5/9;
-// } else if (unit === 'K') {
-//     (weather.temp - 32) * 5/9 + 273.15;
-//     (weather.feelsLike - 32) * 5/9 + 273.15;
-// };
-
+let select = document.querySelector('#select-unit')
+select.addEventListener('change', () => {
+    displayData()
+})

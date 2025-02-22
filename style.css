@@ -14,6 +14,7 @@ html, body {
     height: 100vh;
     justify-content: center;
     align-items: center;
+    background-color: rgb(182, 182, 182);
 }
 
 #data-container {
@@ -26,4 +27,26 @@ html, body {
 
 #select-unit {
     margin: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#search-location {
+    background-image: url('img/magnify.svg');
+    width: 23px;
+}
+
+#search-container {
+    display: flex;
+    gap: 3px;
+}
+
+.data-pretty {
+    background-color: rgb(13, 15, 48);
+    color: white;
+    border: ridge black;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 3px;
 }
